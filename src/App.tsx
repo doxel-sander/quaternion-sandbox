@@ -29,18 +29,20 @@ export const App = () => {
   return <>
     <div className="controls">
       <h2>Controls</h2>
-      <label>X: {x} (actual: {quaternion.x})<br />
+      <label>X: <input value={x} onChange={evt => setX(+evt.target.value)}></input> (actual: {quaternion.x})<br />
         <input type="range" min="-1" max="1" step="0.1" value={x} onChange={evt => setX(+evt.target.value)} />
       </label>
-      <label>Y: {y} (actual: {quaternion.y})<br />
+
+
+      <label>Y: <input value={y} onChange={evt => setY(+evt.target.value)}></input> (actual: {quaternion.y})<br />
         <input type="range" min="-1" max="1" step="0.1" value={y} onChange={evt => setY(+evt.target.value)} />
       </label>
 
-      <label>Z: {z} (actual: {quaternion.z})<br />
+      <label>Z: <input value={z} onChange={evt => setZ(+evt.target.value)}></input> (actual: {quaternion.z})<br />
         <input type="range" min="-1" max="1" step="0.1" value={z} onChange={evt => setZ(+evt.target.value)} />
       </label>
 
-      <label>W: {w} (actual: {quaternion.w})<br />
+      <label>W: <input value={w} onChange={evt => setW(+evt.target.value)}></input> (actual: {quaternion.w})<br />
         <input type="range" min="-1" max="1" step="0.1" value={w} onChange={evt => setW(+evt.target.value)} />
       </label>
 

@@ -12,6 +12,7 @@
     border-radius: 20px;
     z-index: 10;
     display: grid;
+    font-family: sans-serif;
 }
 
 .controls h2 {
