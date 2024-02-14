@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { useState } from "react"
-import './app.css'
+import './AppStyle.css'
 import * as THREE from 'three'
 import { OrbitControls, Text } from "@react-three/drei";
 import { Suzanne } from "./Suzanne";
