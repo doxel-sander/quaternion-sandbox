@@ -4,6 +4,7 @@ import './AppStyle.css'
 import * as THREE from 'three'
 import { OrbitControls, Text } from "@react-three/drei";
 import { Suzanne } from "./Suzanne";
+import { DeltaSandbox } from "./DeltaSandbox";
 
 const HORIZONTAL_SPACE = 2
 
@@ -62,9 +63,6 @@ export const App = () => {
 
         <OrbitControls />
 
-        {/* interactive mesh */}
-        <Suzanne quaternion={quaternion} />
-
         {/* lights */}
         <ambientLight intensity={0.8} />
         <directionalLight intensity={2} position={[10, 10, 10]} />
@@ -72,25 +70,33 @@ export const App = () => {
         {/* helpers */}
         <axesHelper args={[5]} />
 
-        <group position={[-examples.length - HORIZONTAL_SPACE * 0.5, 2, 0]}>
-          {examples.map((example, i) => <group position={[HORIZONTAL_SPACE * (i + 1), 0, 0]}>
-            <Text color="white" position-y={1} fontSize={0.2}>
-              ({example.toArray().join(', ')})
-            </Text>
-            <Suzanne
-              quaternion={example.clone().normalize()}
-              onClick={() => {
-                setX(example.x)
-                setY(example.y)
-                setZ(example.z)
-                setW(example.w)
-              }}
-              scale={0.5}
-            >
-            </Suzanne>
-          </group>)}
-        </group>
+        {/* Quaternion deltas */}
+        <DeltaSandbox />
 
+        {/* Quaternion rotation references */}
+        <group position-y={-5}>
+          {/* interactive mesh */}
+          <Suzanne quaternion={quaternion} />
+
+          <group position={[-examples.length - HORIZONTAL_SPACE * 0.5, 2, 0]}>
+            {examples.map((example, i) => <group position={[HORIZONTAL_SPACE * (i + 1), 0, 0]} key={i}>
+              <Text color="white" position-y={1} fontSize={0.2}>
+                ({example.toArray().join(', ')})
+              </Text>
+              <Suzanne
+                quaternion={example.clone().normalize()}
+                onClick={() => {
+                  setX(example.x)
+                  setY(example.y)
+                  setZ(example.z)
+                  setW(example.w)
+                }}
+                scale={0.5}
+              >
+              </Suzanne>
+            </group>)}
+          </group>
+        </group>
 
 
       </Canvas>
